@@ -1,4 +1,4 @@
-# gateway-build-container
+# Mono Gateway Yocto build container
 
 This repository provides a containerized build environment for the Mono Gateway Yocto-based distribution. It ensures a consistent and reproducible build process by including all necessary dependencies and setup scripts.
 
