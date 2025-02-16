@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-ARG USERNAME=root
+ARG USERNAME=user
 ENV USER=${USERNAME}
 
 RUN apt-get -y update 
