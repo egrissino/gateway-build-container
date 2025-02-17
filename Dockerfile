@@ -18,20 +18,18 @@ ENV LC_ALL=en_US.UTF-8
 RUN adduser ${USER}
 RUN usermod -aG ubuntu ${USER}
 RUN newgrp ubuntu
-RUN mkdir /home/${USER}/yoctoworkspace
-USER ${USER}
-
-RUN mkdir -p ~/env
-RUN cd ~/env && python3 -m venv ./
-ENV PATH="~/env/bin:$PATH"
-COPY ./requirements.txt /home/${USER}/requirements.txt
-RUN ~/env/bin/python3 -m pip install -r ~/requirements.txt
-
-COPY ./buildyocto.sh /home/${USER}/yoctoworkspace
-RUN chmod +x /home/${USER}/yoctoworkspace/buildyocto.sh
 
 VOLUME "/home/${USER}/yoctoworkspace"
 WORKDIR "/home/${USER}/yoctoworkspace"
 
+COPY buildyocto.sh /home/${USER}/buildyocto.sh
+RUN chmod +x /home/${USER}/buildyocto.sh
+RUN echo "cp /home/${USER}/buildyocto.sh /home/${USER}/yoctoworkspace/buildyocto.sh" >> /home/${USER}/.bashrc
 
+USER ${USER}
 
+RUN mkdir -p /home/${USER}/env
+RUN cd /home/${USER}/env && python3 -m venv ./
+ENV PATH="~/env/bin:$PATH"
+COPY requirements.txt /home/${USER}/requirements.txt
+RUN /home/${USER}/env/bin/python3 -m pip install -r /home/${USER}/requirements.txt
