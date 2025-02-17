@@ -1,6 +1,10 @@
 #!/bin/bash
 RELEASE=kirkstone
 
+if [[ ! -z "$DRY_RUN" ]]; then
+    BITBAKE_OPTS+=" --dry-run"
+fi
+
 mkdir -p sources && cd sources
 
 git clone git://git.yoctoproject.org/git/poky
@@ -26,4 +30,4 @@ cp -r ./sources/meta-monogateway/conf $BUILD_DIR
 
 source sources/poky/oe-init-build-env
 
-bitbake core-image-minimal
+bitbake core-image-minimal $BITBAKE_OPTS
