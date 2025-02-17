@@ -28,6 +28,7 @@ COPY ./requirements.txt /home/${USER}/requirements.txt
 RUN ~/env/bin/python3 -m pip install -r ~/requirements.txt
 
 COPY ./buildyocto.sh /home/${USER}/yoctoworkspace
+RUN chmod +x /home/${USER}/yoctoworkspace/buildyocto.sh
 
 VOLUME "/home/${USER}/yoctoworkspace"
 WORKDIR "/home/${USER}/yoctoworkspace"
