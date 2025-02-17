@@ -18,7 +18,7 @@ ENV LC_ALL=en_US.UTF-8
 RUN adduser ${USER}
 RUN usermod -aG ubuntu ${USER}
 RUN newgrp ubuntu
-RUN mkdir /home/${USER}/yoctoworksapce
+RUN mkdir /home/${USER}/yoctoworkspace
 USER ${USER}
 
 RUN mkdir -p ~/env
