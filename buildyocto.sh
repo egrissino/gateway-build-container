@@ -6,7 +6,7 @@ mkdir -p sources && cd sources
 git clone git://git.yoctoproject.org/git/poky
 git clone git://git.yoctoproject.org/meta-freescale
 git clone git://git.openembedded.org/meta-openembedded
-git clone git@github.com:egrissino/meta-monogateway.git
+git clone https://github.com/egrissino/meta-monogateway.git
 
 cd poky && git switch $RELEASE && cd ..
 cd meta-freescale && git switch $RELEASE && cd ..
