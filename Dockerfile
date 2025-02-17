@@ -27,7 +27,7 @@ ENV PATH="~/env/bin:$PATH"
 COPY ./requirements.txt /home/${USER}/requirements.txt
 RUN ~/env/bin/python3 -m pip install -r ~/requirements.txt
 
-COPY ./buildyocto.sh ~/yoctoworkspace
+COPY ./buildyocto.sh /home/${USER}/yoctoworkspace
 
 VOLUME "/home/${USER}/yoctoworkspace"
 WORKDIR "/home/${USER}/yoctoworkspace"
