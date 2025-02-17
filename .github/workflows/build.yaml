@@ -54,8 +54,6 @@ jobs:
         password: ${{ secrets.GHCR_PAT }}
 
     - name: Pull and run gateway-build-container
-      env:
-        "DRY_RUN" = 1
       run: |
         docker pull ghcr.io/egrissino/gateway-build-container:latest
         docker run --rm -v $(pwd):/home/user/yoctoworkspace -w /home/user/yoctoworkspace ghcr.io/egrissino/gateway-build-container:latest -e DRY_RUN=1 ./buildyocto.sh 
