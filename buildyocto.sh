@@ -1,12 +1,18 @@
 #!/bin/bash
 RELEASE=kirstone
 
-mkdir -p sources
+mkdir -p sources && cd sources
 
-git clone -b $RELEASE https://git.yoctoproject.org/git/poky
-git clone -b $RELEASE git://git.yoctoproject.org/meta-freescale
-git clone -b $RELEASE git://git.openembedded.org/meta-openembedded
-git clone -b $RELEASE https://github.com/egrissino/meta-monogateway.git
+git clone https://git.yoctoproject.org/git/poky
+git clone git://git.yoctoproject.org/meta-freescale
+git clone git://git.openembedded.org/meta-openembedded
+git clone https://github.com/egrissino/meta-monogateway.git
+
+cd poky && git switch $RELEASE && cd ..
+cd meta-freescale && git switch $RELEASE && cd ..
+cd meta-openembedded && git switch $RELEASE && cd ..
+
+cd ..
 
 if [[ -z "$BUILD_DIR" ]]; then
     BUILD_DIR="build"
