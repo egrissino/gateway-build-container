@@ -19,7 +19,7 @@ if [[ ! -z "$INIT" ]]; then
     repo sync
 
     cd sources
-    git clone https://github.com/egrissino/meta-monogateway.git -b machine-ls1046a-gateway
+    git clone https://github.com/egrissino/meta-monogateway.git
 
     cd ../
 fi
