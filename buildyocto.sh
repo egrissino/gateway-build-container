@@ -20,6 +20,8 @@ if [[ ! -z "$INIT" ]]; then
 
     cd sources
     git clone https://github.com/egrissino/meta-monogateway.git -b machine-ls1046a-gateway
+
+    cd ../
 fi
 
 mkdir -p build
