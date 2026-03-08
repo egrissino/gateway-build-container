@@ -32,7 +32,7 @@ This script will:
 ### 3. Start the Yocto Build
 Once inside the container, run:
 ```bash
-source ./buildyocto.sh
+INIT=1 ./buildyocto.sh
 ```
 This will:
 - Synchronize the Yocto layers
