@@ -11,7 +11,8 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y chrpath diffstat gawk lz4 locales
 RUN apt-get install -y cpio file git wget zstd nano screen iputils-ping iproute2
 RUN apt-get install -y python3 python3-pip python3-venv
-RUN apt-get install -y repo
+RUN apt-get install -y repo libncurses-dev pkg-config
+
 RUN apt-get install git
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 
@@ -19,9 +20,8 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en  
 ENV LC_ALL=en_US.UTF-8
 
+RUN userdel ubuntu
 RUN adduser ${USER}
-RUN usermod -aG ubuntu ${USER}
-RUN newgrp ubuntu
 
 RUN git config --global user.email "${EMAIL}"
 RUN git config --global user.name "${UNAME}"
